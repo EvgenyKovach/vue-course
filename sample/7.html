@@ -10,14 +10,7 @@
     <div id="app">
         <h1>{{ title }}</h1>
         <div v-if="showContent">
-            <ul>
-                <li v-for='(user, index) in users' :key='index'>
-                    {{ index }} - {{ user.name }} <br>
-                    <span>age: {{ user.age  }} / mail: {{  user.mail  }}</span>
-                </li>
-            </ul>
         </div>
-        <button @click="getContent">Бум</button>
     </div>
     <script>
         var app = new Vue ({
@@ -25,20 +18,17 @@
             data: {
                 title: 'Data',
                 showContent: true,
-                // user: {
-                //     name: 'Jack',
-                //     mail: 'info@gg.ru'
-                // },
-                users: [
-                    {name: 'jack', mail: 'pep@gg.rup', age: '23'},
-                    {name: 'wolf', mail: 'p123ep@gg.rup', age: '43'},
-                    {name: 'mark', mail: 'peerep@gg.rup', age: '55'},
-                ]
             },
             methods: {
-                getContent () {
-                    this.showContent = !this.showContent;
+                getDate () {
+                    alert('the time is ')
                 }
+            },
+            created() {
+                this.getDate()
+            },
+            mounnted() {
+                this.getDate()
             }
         })
     </script>
