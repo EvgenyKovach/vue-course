@@ -4,12 +4,14 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
-  <title>Document</title>
+  <title>VUE</title>
 </head>
 <body>
   <div id='app'>
     <h1> {{ title }} </h1>
-
+    <div class="message" v-if='message'>
+      {{ message }}
+    </div>
     <div class="new-note">
       <input v-model='note.title' type="text">
       <textarea v-model='note.descr' ></textarea>
@@ -33,6 +35,7 @@
       el: '#app',
       data: {
         title: 'Notes App',
+        message: null,
         note: {
           title: '',
           descr: ''
@@ -59,11 +62,17 @@
         addNote() {
           // console.log(this.note)
           let {title, descr} = this.note
+
+          if (title === '') return this.message = 'need title'
+
           this.notes.push({
             title: title,
             descr: descr,
             date: new Date(Date.now()).toLocaleString()
           })
+          this.note.title =''
+          this.note.descr =''
+          this.message = null
         }
       }
     })
