@@ -5,31 +5,13 @@
       <section>
         <div class="container">
           
-        <h1> {{ title }} </h1>
+          <h1> {{ title }} </h1>
 
-          <message v-if='message' :message='message'/>
+          <message v-if='message' :message='message'  />
 
-          <div class="new-note">
-            <input v-model='note.title' type="text">
-            <textarea v-model='note.descr' ></textarea>
-            <button @click="addNote">Push</button>
-          </div>
-
-          <div class="notes">
-
-            <div class="note" v-for="(note, index) in notes" :key='index'>
-              
-              <div class="note-header">
-                <h2> {{ note.title }}  </h2>
-              </div>
-              <div class="note-body">
-                <p>{{ note.descr  }}</p>
-                <p>{{ note.date }}</p>
-              </div>
-
-            </div>
-
-          </div>
+          <newNote :note='note' @addNote='addNote' />
+          
+          <notes :notes='notes' @remove='removeNote' />
 
         </div>
       </section>
@@ -40,10 +22,14 @@
 
 <script>
 import message from '@/components/Message.vue'
+import newNote from '@/components/NewNote.vue'
+import notes from '@/components/Notes.vue'
 
 export default {
   components: {
-    message
+    message,
+    newNote,
+    notes
   },
   data () {
       return {
@@ -87,7 +73,10 @@ export default {
         this.note.title =''
         this.note.descr =''
         this.message = null
-      }
+      },
+      removeNote(index) {
+        this.notes.splice(index, 1)
+      } 
   }
 }
 </script>
