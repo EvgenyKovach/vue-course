@@ -35,7 +35,6 @@ export default {
 <style lang="scss" scoped>
     .notes {
         display: flex;
-        flex-direction: column;
         align-items: center;
         justify-content: space-between;
         flex-wrap: wrap;
@@ -46,8 +45,14 @@ export default {
       position: relative;
       margin: 15px 0;
       padding: 10px 15px;
-      width: 100%;
+      width: calc(100%/2 - 15px);
+      height: auto;
       background: #F9DF9C;
+      
+      @media screen and (max-width: 768px) {
+        width: 100%;
+      }
+
     }
 
     h2 {
@@ -70,5 +75,13 @@ export default {
       position: absolute;
       right: 15px;
       top: 15px;
+    }
+
+    .note-header {
+        display: flex;
+        justify-content: space-between;
+        color: #3c4294;
+        font-weight: bold;
+        font-size: 16px;
     }
 </style>

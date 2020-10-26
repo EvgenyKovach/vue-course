@@ -26,7 +26,7 @@ export default {
     }
 
     p {
-        color: red
+        color: red;
     }
 
 </style>
