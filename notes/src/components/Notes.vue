@@ -1,6 +1,6 @@
 <template>
     <div class="notes">
-        <div class="note" v-for="(note, index) in notes" :key='index'>
+        <div class="note" :class="{ full: !grid }" v-for="(note, index) in notes" :key='index'>
     
             <div class="note-header">
                 <h2> {{ note.title }}  </h2>
@@ -21,8 +21,13 @@ export default {
         notes: {
             type: Array,
             required: true
+        },
+        grid: {
+            type: Boolean,
+            required: true
         }
     },
+
     methods: {
         removeNote (index) {
             console.log(`Note ${index} -- removed`)
@@ -48,9 +53,9 @@ export default {
       width: calc(100%/2 - 15px);
       height: auto;
       background: #F9DF9C;
-      
-      @media screen and (max-width: 768px) {
-        width: 100%;
+
+      &.full {
+        width: 100%
       }
 
     }
