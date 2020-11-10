@@ -60,16 +60,19 @@ export default {
           {
             title: 'first note',
             descr: 'desr for first note',
-            date: new Date(Date.now()).toLocaleString()
+            date: new Date(Date.now()).toLocaleString(),
+            priority: "hot"
           },
           {
             title: 'second note',
             descr: 'desr for second note',
+            priority: 'middle',
             date: new Date(Date.now()).toLocaleString()
           },
           {
             title: 'third note',
             descr: 'desr for third note',
+            priority: 'cold',
             date: new Date(Date.now()).toLocaleString()
           }
         ]
@@ -96,17 +99,19 @@ export default {
     methods: {
       addNote() {
         // console.log(this.note)
-        let {title, descr} = this.note
+        let {title, descr, priority} = this.note
 
         if (title === '') return this.message = 'need title'
 
         this.notes.push({
           title: title,
           descr: descr,
+          priority: priority,
           date: new Date(Date.now()).toLocaleString()
         })
         this.note.title =''
         this.note.descr =''
+        this.note.priority = ''
         this.message = null
       },
       removeNote(index) {
