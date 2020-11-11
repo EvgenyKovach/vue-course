@@ -1,13 +1,15 @@
 <template>
     <div class="notes">
-        <div class="note" :class="{ full: !grid, note.priority: note.priority }" v-for="(note, index) in notes" :key='index' >
+        <div class="note" 
+            :class="[{ full: !grid }, note.priority]" 
+            v-for="(note, index) in notes" :key='index' >
     
             <div class="note-header">
                 <h2> {{ note.title }}  </h2>
                 <p class="remove-note" @click='removeNote(index)'>X</p>
             </div>
             <div class="note-body">
-                <p>{{ note.descr  }}</p>
+                <p>{{ note.descr }}</p>
                 <p class="note-data">{{ note.date }}</p>
             </div>
 
@@ -58,6 +60,18 @@ export default {
         width: 100%
       }
 
+      &.hot {
+        box-shadow: 0 0 10px red;
+      }
+
+      &.middle {
+        box-shadow: 0 0 10px rgb(238, 255, 0);
+      }
+
+      &.cold {
+        box-shadow: 0 0 10px rgb(0, 102, 255);
+      }
+
     }
 
     h2 {
@@ -80,6 +94,11 @@ export default {
       position: absolute;
       right: 15px;
       top: 15px;
+      transition: .15s ease-in-out;
+
+      &:hover {
+          transform: rotate(90deg);
+      }
     }
 
     .note-header {
