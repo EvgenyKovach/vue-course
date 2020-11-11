@@ -61,15 +61,15 @@ export default {
       }
 
       &.hot {
-        box-shadow: 0 0 10px red;
+        box-shadow: 0 0 20px rgb(0, 255, 128);
       }
 
       &.middle {
-        box-shadow: 0 0 10px rgb(238, 255, 0);
+        box-shadow: 0 0 20px rgb(255, 230, 0);
       }
 
       &.cold {
-        box-shadow: 0 0 10px rgb(0, 102, 255);
+        box-shadow: 0 0 20px rgb(37, 37, 37);
       }
 
     }
@@ -94,10 +94,10 @@ export default {
       position: absolute;
       right: 15px;
       top: 15px;
-      transition: .15s ease-in-out;
+      transition: .215s ease-in-out;
 
       &:hover {
-          transform: rotate(90deg);
+          transform: rotate(180deg);
       }
     }
 
