@@ -1,8 +1,9 @@
 <template>
     <div class="notes">
         <div class="note" 
-            :class="[{ full: !grid }, note.priority]" 
-            v-for="(note, index) in notes" :key='index' >
+             
+            v-for="(note, index) in notes" :key='index' 
+            :class="[{ full: !grid }, note.priority]">
     
             <div class="note-header">
                 <h2> {{ note.title }}  </h2>
