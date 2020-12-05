@@ -1,11 +1,11 @@
 <template>
   <transition name="modal">
-    <div class="modal__wrapper">
-      <div class="modal-content" >
+    <div class="modal__wrapper" @click="$emit('close')">
+      <div class="modal-content" @click.stop="">
 
         <div class="modal-header">
           <span class="modal-title"> {{ title }} </span>
-          <span class="button-close" >×</span>
+          <span class="button-close" @click="$emit('close')">×</span>
         </div>
         <div class="modal-body">
           
@@ -17,6 +17,7 @@
 </template>
 
 <script>
+
 export default {
   props: {
     title: {
@@ -24,9 +25,15 @@ export default {
       required: true
     }
   },
+  mounted () {
+    document.body.addEventListener('keyup', e => {
+      if (e.keyCode == 27) this.$emit('close')
+    })
+  },
   computed: {},
   methods: {}
 }
+
 </script>
 
 <style lang="scss" scoped>

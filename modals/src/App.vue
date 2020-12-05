@@ -8,7 +8,9 @@
 
           <modals 
             title='first modal'
-            v-if='modalFirst'>Yop</modals>
+            v-if='modalFirst'
+            @close="modalFirst = !modalFirst"
+            >Yop</modals>
         </div>
       </section>
     </div>
